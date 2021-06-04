@@ -1,0 +1,23 @@
+/* Header */
+header
+{
+    background-color: var(--background-header);
+    color: var(--color-header);
+    
+    padding: 16px 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+header a
+{
+    color: var(--color-header);
+    text-decoration: none;
+}
+
+header a h1
+{
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
