@@ -1,0 +1,45 @@
+form
+{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+
+input
+{
+  width: 100%;
+  font-size: 1rem;
+
+  padding: 8px 8px 4px 8px;
+  border-bottom: 1px solid #727272;
+
+  outline: none;
+}
+input:focus
+{
+  border-bottom-color: var(--background-footer);
+}
+
+button
+{
+  width: 100%;
+  font-size: 1rem;
+  padding: 8px;
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, .1);
+  border-radius: 5px;
+}
+
+button[type="submit"]
+{
+  background-color: var(--background-header);
+}
+
+div.items
+{
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  gap: 6px;
+}

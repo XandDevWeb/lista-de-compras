@@ -1,0 +1,27 @@
+ol
+{
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+li
+{
+  margin-left: 30px;
+  padding: 6px 0;
+}
+
+span
+{
+  width: 100%;
+  height: auto;
+}
+
+span:nth-child( 2n -1 )
+{
+  background-color: #ff7f5096;
+}
+span:nth-child( 2n )
+{
+  background-color: #ff7f5035;
+}

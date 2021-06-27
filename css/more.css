@@ -1,0 +1,47 @@
+main label
+{
+  color: #fff8dc;
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  position: absolute;
+  right: 17px;
+  top: 17px;
+
+  width: min-content;
+  height: min-content;
+  
+  cursor: pointer;
+}
+
+input[type="checkbox"],
+div.more
+{
+  display: none;
+}
+
+img
+{
+  width: 24px;
+  height: 24px;
+}
+
+input[type="checkbox"]:checked + div.more
+{
+  display: flex;
+}
+
+div.more
+{
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
+  background-color: #6b6b6b45;
+
+  position: absolute;
+  top: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+}

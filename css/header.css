@@ -14,6 +14,7 @@ header a
 {
     color: var(--color-header);
     text-decoration: none;
+    text-align: center;
 }
 
 header a h1
@@ -21,3 +22,51 @@ header a h1
     text-transform: uppercase;
     letter-spacing: 2px;
 }
+
+header div.theme
+{
+    position: absolute;
+    top: 20px;
+    right: 20px;
+
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+header div.theme label,
+header div.theme span
+{ font-size: 1rem; cursor: pointer; }
+
+header div.theme input[type="checkbox"]
+{ display: none; }
+
+header div.theme label div.button
+{
+    height: 14px;
+    width: 30px;
+    
+    background-color: var(--background-header);
+    border: 3px solid var(--color-footer);
+    border-radius: 7px;
+
+    position: relative;
+}
+
+header div.theme label div.button span.switch
+{
+    width: 20px;
+    height: 20px;
+
+    background-color: var(--background-theme);
+    border: 2px solid var(--background-footer);
+    border-radius: 50%;
+
+    position: absolute;
+    top: -6px;
+
+    transition: all .3s;
+}
+
+.light-theme { left: -7px; }
+.dark-theme { left: 11px; }

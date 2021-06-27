@@ -1,60 +1,88 @@
 main
-{
-    flex: 1;
-    display: flex;
-    flex-direction: column;
+{ --grid-columns: 8 }
 
-    padding: 15px;
-    position: relative;
-
-    color: var(--color-main);
-    background-color: var(--background-main);
+@media screen and (max-width: 1200px) {
+    main
+    { --grid-columns: 6 }
 }
 
-main div.settings
+@media screen and (max-width: 900px) {
+    main
+    { --grid-columns: 4 }
+}
+
+@media screen and (max-width: 500px) {
+    main
+    { --grid-columns: 3 }
+}
+
+@media screen and (max-width: 500px) {
+    main
+    { --grid-columns: 2 }
+}
+
+main section
 {
-    position: absolute;
-    top: 20px;
-    right: 20px;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    grid-template-columns: repeat(var(--grid-columns), 1fr);
+    
+}
+
+main section div
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 12px;
+    
+    width: 100%;
+    background-color: var(--background-header);
+    border-radius: 5%;
+    font-size: 1.1rem;
+    font-weight: bold;
+    
+    border: .1px solid #aeaeae;
+    box-shadow: 3px 4px 5px #d5d3d3;
+    
+    cursor: pointer;
+    text-align: center;
+
+}
+main section div span
+{
+    font-size: .8rem;
+    font-weight: lighter;
+}
+
+main section div.add-list
+{
+    font-size: 1.5rem;
+    color: #fff8dc;
 
     display: flex;
     align-items: center;
-    gap: 5px;
-}
+    justify-content: center;
+    width: 1.5rem;
 
-main div.settings label,
-main div.settings span
-{ font-size: 1rem; cursor: pointer; }
+    margin-left: 15px;
+    border: .5px solid #000000;
+    border-radius: 2px;
 
-main div.settings input[type="checkbox"]
-{ display: none; }
+    box-shadow: 0 0 5px #d5d3d3;
 
-main div.settings label div.button
-{
-    height: 14px;
-    width: 30px;
-    
-    background-color: var(--background-header);
-    border: 3px solid var(--color-footer);
-    border-radius: 7px;
-
-    position: relative;
-}
-
-main div.settings label div.button span.switch
-{
-    width: 20px;
-    height: 20px;
-
-    background-color: var(--background-theme);
-    border: 2px solid var(--background-footer);
-    border-radius: 50%;
+    cursor: pointer;
 
     position: absolute;
-    top: -6px;
-
-    transition: all .3s;
+    right: 17px;
+    top: 17px;
 }
 
-.light-theme { left: -7px; }
-.dark-theme { left: 11px; }
+main .alert-empty
+{
+    text-align: center;
+    font-size: 1rem;
+}
