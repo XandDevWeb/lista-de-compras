@@ -1,4 +1,5 @@
 const listStorage = getItemStorage( "listaDeCompras" )
+const ol = document.querySelector("main ol")
 
 const createDiv = list => {
   const divAddList = document.querySelector("div.add-list")

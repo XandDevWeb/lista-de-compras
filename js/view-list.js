@@ -98,6 +98,23 @@ const printList = () => {
     windowPrint.close()
 }
 
+const toggleClasses = (element, parentElement) => {
+  element.classList.toggle("disable")
+  parentElement.classList.toggle("disable")
+}
+
+const disabledItem = event => {
+  const nameElement = event.target.nodeName
+  const clickedElement = event.target
+  const parentElement = event.target.parentNode
+
+  nameElement === "LI"
+    ? toggleClasses(clickedElement, parentElement)
+    : false
+}
+
+ol.addEventListener("dblclick", disabledItem)
+
 trash.addEventListener("click", deleteList)
 refresh.addEventListener("click", updateList)
 buttonPrintList.addEventListener("click", printList)

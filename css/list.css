@@ -25,3 +25,15 @@ span:nth-child( 2n )
 {
   background-color: #ff7f5035;
 }
+
+span.disable
+{
+  background-color: #55555530;
+  border-top: 1px solid #99999940 inset;
+  border-bottom: 1px solid #99999940 inset;
+}
+li.disable
+{
+  text-decoration: line-through;
+  color: rgb(62, 104, 106);
+}
