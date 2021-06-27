@@ -14,6 +14,8 @@
     <link rel="stylesheet" type="text/css" href="./css/header.css">
     <link rel="stylesheet" type="text/css" href="./css/home.css">
     <link rel="stylesheet" type="text/css" href="./css/footer.css">
+    <link rel="stylesheet" type="text/css" href="./css/list.css">
+    <link rel="stylesheet" type="text/css" href="./css/more.css">
 </head>
 <body>
 
@@ -32,11 +34,18 @@
     </header>
 
     <main>
-        <h2>Listas Criadas</h2>
-        <hr>
-        <section>
-            <div class="add-list">+</div>
-        </section>
+        <ol></ol>
+
+        
+        <label for="open-more">
+            <img src="img/more.png">
+        <label>
+        <input type="checkbox" id="open-more">
+        <div class="more">
+            <img src="img/trash.png" data-js="trash">
+            <img src="img/refresh.png" data-js="refresh">
+            <img src="img/print.png" data-js="print">
+        </div>
     </main>
 
     <footer>
@@ -46,8 +55,7 @@
     
     <script src="./js/storage.js"></script>
     <script src="./js/theme.js"></script>
-    <script src="./js/show-lists.js"></script>
     <script src="./js/size-div-main.js"></script>
-    <script src="./js/home.js"></script>
+    <script src="./js/view-list.js"></script>
 </body>
 </html>

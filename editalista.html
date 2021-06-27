@@ -12,8 +12,9 @@
 
     <link rel="stylesheet" type="text/css" href="./css/index.css">
     <link rel="stylesheet" type="text/css" href="./css/header.css">
-    <link rel="stylesheet" type="text/css" href="./css/home.css">
+    <link rel="stylesheet" type="text/css" href="./css/nova-lista.css">
     <link rel="stylesheet" type="text/css" href="./css/footer.css">
+    <link rel="stylesheet" type="text/css" href="./css/form.css">
 </head>
 <body>
 
@@ -32,11 +33,16 @@
     </header>
 
     <main>
-        <h2>Listas Criadas</h2>
-        <hr>
-        <section>
-            <div class="add-list">+</div>
-        </section>
+        <h2>Editar Lista</h2>
+        <form action="#" method="post">
+          <input type="text" name="title" placeholder="título"  required autofocus>
+
+          <div class="items">
+              <button type="button">mais um item na lista</button>
+          </div>
+
+          <button type="submit">Concluir</button>
+        </form>
     </main>
 
     <footer>
@@ -44,10 +50,9 @@
         <p>Alexandre Lima de Oliveira</p>
     </footer>
     
-    <script src="./js/storage.js"></script>
     <script src="./js/theme.js"></script>
-    <script src="./js/show-lists.js"></script>
+    <script src="./js/storage.js"></script>
     <script src="./js/size-div-main.js"></script>
-    <script src="./js/home.js"></script>
+    <script src="./js/modify-list.js"></script>
 </body>
 </html>
