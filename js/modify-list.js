@@ -25,7 +25,10 @@ const addInputItemWithValue = value => {
   input.setAttribute( "type", "text" )
   input.setAttribute( "name", "item" )
   input.setAttribute( "placeholder", "novo item" )
-  input.setAttribute( "value", value )
+  input.setAttribute( "class", `${value[1]}` )
+  input.setAttribute( "value", `${value[0]}` )
+
+  console.log(value)
   
   const divItem = buttonAddItem.parentNode
   divItem.insertBefore( input, buttonAddItem )
@@ -55,15 +58,15 @@ const getInputValues = () => {
   const inputs = Array.from( document.querySelectorAll("input[name='item']") )
 
   return inputs
-    .map( input => input.value )
-    .filter( value => Boolean( value ) )
+    .map( input => [input.value, input.className] )
+    .filter( classAndValue => Boolean( classAndValue[0] ) ? classAndValue : false )
 }
 
 const getNewValues = () => {
 
   const title = inputTitle.value
   const inputValues = getInputValues()
-  
+  console.log(inputValues)
   return ({
     "id": getListId(),
     "title": title,

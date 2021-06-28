@@ -23,7 +23,10 @@ const showError = () => {
 const createLi = text => {
   const span = document.createElement("span")
   const li = document.createElement("li")
-  li.textContent = text
+
+  span.setAttribute("class", `${text[1]}`)
+  li.setAttribute("class", `${text[1]}`)
+  li.textContent = text[0]
   
   span.appendChild(li)
   ol.appendChild(span)
@@ -98,9 +101,33 @@ const printList = () => {
     windowPrint.close()
 }
 
+const toggleClassesStorage = element => {
+  const stringList = localStorage.getItem("listaDeCompras")
+  
+  const stringSearchEmpty = `["${element.innerText}",""]`
+  const stringSearchClass = `["${element.innerText}","disable"]`
+
+  console.log(stringList)
+  console.log(stringSearchEmpty)
+  console.log(stringSearchClass)
+  
+  const replaceClass = (search, className) => stringList.replace(search, className)
+  
+  if ( stringList.includes( stringSearchEmpty ) )
+  {
+    localStorage.setItem("listaDeCompras", replaceClass(stringSearchEmpty, stringSearchClass))
+  }
+
+  if ( stringList.includes( stringSearchClass ) )
+  {
+    localStorage.setItem("listaDeCompras", replaceClass(stringSearchClass, stringSearchEmpty))
+  }
+}
+
 const toggleClasses = (element, parentElement) => {
   element.classList.toggle("disable")
   parentElement.classList.toggle("disable")
+  toggleClassesStorage(element)
 }
 
 const disabledItem = event => {

@@ -15,9 +15,11 @@ const addInputItem = () => {
 const getInputValues = () => {
   const inputs = Array.from( document.querySelectorAll("input[name='item']") )
 
-  return inputs
+  const inputValues = inputs
     .map( input => input.value )
     .filter( value => Boolean( value ) )
+
+  return inputValues.map( value => [value, ""] )
 }
 
 const getId = () => {

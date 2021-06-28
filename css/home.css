@@ -50,7 +50,7 @@ main section div
     
     cursor: pointer;
     text-align: center;
-
+    user-select: none;
 }
 main section div span
 {
