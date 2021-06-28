@@ -48,6 +48,12 @@ const showList = () => {
 currentList.title ? showList() : showError()
 
 const deleteList = () => {
+  const confirmDeletion = confirm("Realmente deseja excluir esta lista?")
+
+  if ( ! confirmDeletion )
+  {
+    return
+  }
   const stringfyObject = JSON.stringify(arrayList[0])
 
   const index = list.indexOf(stringfyObject)

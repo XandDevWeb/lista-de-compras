@@ -1,4 +1,5 @@
 const form = document.querySelector("form")
+const divItems = document.querySelector("div.items")
 const buttonAddItem = document.querySelector("div.items button")
 const inputTitle = document.querySelector("input[name='title']")
 
@@ -90,6 +91,17 @@ const toUpdateList = event => {
   open("./lista.html", "_self")
 }
 
+const removeInput = event => {
+  const clickedElement = event.target
+
+  
+  if ( clickedElement.nodeName === "INPUT" )
+  {
+    clickedElement.remove()
+  }
+}
+
 buttonAddItem.addEventListener("click", addInputItem)
 window.addEventListener("load", preparePage)
 form.addEventListener("submit", toUpdateList)
+divItems.addEventListener("dblclick", removeInput)
