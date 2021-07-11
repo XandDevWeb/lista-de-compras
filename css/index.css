@@ -9,6 +9,9 @@ html
     --color-main: #000000;
     --color-footer: #242424;
     --background-theme: #ffffff;
+
+    --background-list-1: #ff7f5096;
+    --background-list-2: #ff7f5035;
 }
 
 *

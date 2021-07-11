@@ -1,3 +1,5 @@
+// MODELAR LOCALSTORAGE NA PRIMEIRA VISITA
+
 const listaDeCompras = localStorage.getItem( "listaDeCompras" )
 const theme = localStorage.getItem( "theme" )
 const lastId = localStorage.getItem( "lastId" )
@@ -19,28 +21,51 @@ listToOpen
     ? false
     : localStorage.setItem("listToOpen", "")
 
-const getItemStorage = item => {
+
+// MANIPULAÇÃO DO ARMAZENAMENTO LOCAL
+
+const getItemStorage = (item, number) => {
   const itemStorage = localStorage.getItem(item)
 
-  return itemStorage ? JSON.parse( localStorage.getItem(item) ) : false
+  const returnValue = itemStorage
+    ? JSON.parse( localStorage.getItem(item) )
+    : false
+
+  return number && returnValue
+    ? Number( returnValue )
+    : returnValue || false
 }
 
-const setItemStorage = ( list, value ) => {
+const setItemStorage = ( key, value ) => {
+  const item = JSON.stringify( value )
 
-  const items = JSON.stringify( value )
-  localStorage.setItem( list, items )
+  localStorage.setItem( key, item )
 }
+
+// FUNÇÃO RESPONSÁVEL POR SALVAR AS LISTAS
 
 const saveList = list => {
-
   const listStorage = getItemStorage( "listaDeCompras" )
-  listStorage.push( list )
 
+  listStorage.push( list )
   setItemStorage( "listaDeCompras", listStorage )
-  console.log(listStorage)
 }
+
+// FUNÇÃO RESPONSÁVEL POR SETAR VALOR DO ÚLTIMO ID
 
 const incrementId = () => {
-  const lastId = Number( localStorage.getItem("lastId") )
-  localStorage.setItem("lastId", `${lastId + 1}`)
+  const lastId = Number( getItemStorage("lastId") )
+  setItemStorage("lastId", lastId + 1)
 }
+
+// FUNÇÃO RESPONSÁVEL POR OBTER O ÚLTIMO ID
+
+const getId = () => {
+  incrementId()
+
+  return Number( getItemStorage("lastId") )
+}
+
+// FUNÇÃO RESPONSÁVEL POR OBTER O ID DA LISTA A SER ABERTA
+
+const getListId = () => Number( getItemStorage("listToOpen") )

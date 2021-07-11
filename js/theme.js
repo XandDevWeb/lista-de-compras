@@ -15,20 +15,26 @@ const propertys =
     "--color-header",
     "--color-main",
     "--color-footer",
-    "--background-theme"
+    "--background-theme",
+    "--background-list-1",
+    "--background-list-2"
 ]
 
-const colorsDark = [ "#3c1800", "#555555", "#48392e", "#ffffff", "#eeeeee", "#e2e2e2", "#000000" ]
+const colorsDark = [ "#1B140B", "#666666", "#444444", "#eeeeee", "#eeeeee", "#eeeeee", "#000000", "#9e8f89", "#847570a6" ]
 
 const setProperty = ( property, index ) =>
     tagHtml.style.setProperty( property, colorsDark[ index ] )
 
+
+const themes = {
+    "light-theme-aplication": () => tagHtml.style = "",
+    "dark-theme-aplication": () => propertys.forEach(setProperty),
+    "light-theme-storage": () => localStorage.setItem( "theme", "light-theme" ),
+    "dark-theme-storage": () => localStorage.setItem( "theme", "dark-theme" )
+}
+
 const setThemeAplication = () => {
-    const themes = {
-        "light-theme": () => tagHtml.style = "",
-        "dark-theme": () => propertys.forEach(setProperty)
-    }
-    const theme = localStorage.getItem( "theme" )
+    const theme = localStorage.getItem( "theme" ) + "-aplication"
 
     themes[theme] ? themes[theme]() : false
 
@@ -36,11 +42,8 @@ const setThemeAplication = () => {
     theme === "dark-theme" ? inputTheme.checked = true : false
 }
 
-const setThemeStorage = theme => {
-    const themes = {
-        "light-theme": () => localStorage.setItem( "theme", "light-theme" ),
-        "dark-theme": () => localStorage.setItem( "theme", "dark-theme" )
-    }
+const setThemeStorage = useTheme => {
+    const theme = useTheme + "-storage"
     
     themes[theme]()
     setThemeAplication()

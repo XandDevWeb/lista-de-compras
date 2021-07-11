@@ -2,49 +2,33 @@ const form = document.querySelector("form")
 const buttonAddItem = document.querySelector("div.items button")
 
 const addInputItem = () => {
-  const input = document.createElement("input")
+  const input = createElement("input", inputTag)
 
-  input.setAttribute( "type", "text" )
-  input.setAttribute( "name", "item" )
-  input.setAttribute( "placeholder", "novo item" )
-
-  const divItem = buttonAddItem.parentNode
-  divItem.insertBefore( input, buttonAddItem )
+  const divItems = buttonAddItem.parentNode
+  divItems.insertBefore( input, buttonAddItem )
 }
 
-const getInputValues = () => {
+const inputValuesWithoutArray = {
+  "map": input => input.value,
+  "filter": value => Boolean( value ),
+  "returnMap": value => [value, ""]
+}
+
+const getInputValues = objFunctions => {
   const inputs = Array.from( document.querySelectorAll("input[name='item']") )
 
   const inputValues = inputs
-    .map( input => input.value )
-    .filter( value => Boolean( value ) )
+    .map( objFunctions.map )
+    .filter( objFunctions.filter )
 
-  return inputValues.map( value => [value, ""] )
+  return inputValues.map( objFunctions.returnMap )
 }
 
-const getId = () => {
-  incrementId()
-
-  return Number( localStorage.getItem("lastId") )
-}
-
-const formatUnit = unit => unit < 10 ? `0${unit}` : unit
-
-const getDate = () => {
-  const date = new Date()
-
-  const day = date.getDate()
-  const month = date.getMonth() + 1
-  const year = date.getFullYear()
-
-  return `${formatUnit(day)} / ${formatUnit(month)} / ${formatUnit(year)}`
-}
-
-const getList = event => {
+const saveCurrentList = event => {
   event.preventDefault()
   
   const title = document.querySelector("input[name='title']").value
-  const inputValues = getInputValues()
+  const inputValues = getInputValues( inputValuesWithoutArray )
   
   const newList = {
     "id": getId(),
@@ -60,4 +44,4 @@ const getList = event => {
 }
 
 buttonAddItem.addEventListener("click", addInputItem)
-form.addEventListener("submit", getList)
+form.addEventListener("submit", saveCurrentList)

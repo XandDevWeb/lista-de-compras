@@ -1,7 +1,10 @@
 const section = document.querySelector("main section")
 
+const setListToOpen = id => 
+  localStorage.setItem( "listToOpen", `${id}` )
+
 const openList = ({dataset}) => {
-  localStorage.setItem( "listToOpen", `${dataset.id}` )
+  setListToOpen( dataset.id )
   open("./lista.html", "_self")
 
 }
@@ -23,33 +26,34 @@ const clickWasOnDiv = event => {
     : false
 }
 
-const messageContentEmpty = insertMessage => {
-  const message = {
-    "insert": () => {
-      const p = document.createElement("p")
-      const a = document.createElement("a")
+const createPMessage = () => {
+  const textContentP = "Nenhuma lista foi criada. "
+  const textContentA = "Criar lista."
 
-      p.setAttribute( "class", "alert-empty" )
-      p.textContent = "Nenhuma lista foi criada. "
-      a.setAttribute( "href", "./novalista.html" )
-      a.setAttribute( "target", "_self" )
-      a.textContent = "Criar lista"
+  const p = createElement("p", pTag, textContentP)
+  const a = createElement("a", aTag, textContentA)
+  p.appendChild(a)
 
-      p.appendChild(a)
-      const main = section.parentNode
-      main.insertBefore(p, section)
-    },
-
-    "remove": () => {
-      const p = document.querySelector("p.alert-empty")
-
-      p ? p.remove : false
-    }
-  }
-  
-
-  insertMessage ? message.insert() : message.remove()
+  return p  
 }
+
+const message = {
+  "insert": () => {
+    const p = createPMessage()
+    const main = section.parentNode
+    
+    main.insertBefore(p, section)
+  },
+
+  "remove": () => {
+    const p = document.querySelector("p.alert-empty")
+
+    p ? p.remove() : false
+  }
+}
+
+const messageContentEmpty = insertMessage =>
+  insertMessage ? message.insert() : message.remove()
 
 const observerLists = () => {
   const lists = Array.from( document.querySelectorAll("div.list") ).length

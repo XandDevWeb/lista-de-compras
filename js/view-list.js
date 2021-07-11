@@ -66,7 +66,7 @@ const deleteList = () => {
 const updateList = () =>
   open("./editalista.html", "_self")
 
-const getSizeUnit = unit => window[`inner${unit}`] - 60
+//const getSizeUnit = unit => window[`inner${unit}`] - 60
 
 const removeMore = newWindow => {
   const elementsRemove = [
@@ -78,47 +78,18 @@ const removeMore = newWindow => {
   elementsRemove.forEach( element => element.remove() )
 }
 
-const printList = () => {
-  const windowPrint = window
-    .open(
-      "",
-      "",
-      `width=${getSizeUnit("Width")},height=${getSizeUnit("Height")}`
-    )
-
-  windowPrint.document.write(
-    ` <!DOCTYPE html>
-      <html lang="pt-br">
-      <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>${currentList.title}</title>
-        <link rel="stylesheet" type="text/css" href="./css/list.css">
-        </head>
-        <body>
-          ${main.innerHTML}
-        </body>
-        </html>
-    `)
-
-    removeMore(windowPrint)
-    windowPrint.print()
-    windowPrint.close()
-}
-
 const toggleClassesStorage = element => {
   const stringList = localStorage.getItem("listaDeCompras")
   
   const stringSearchEmpty = `["${element.innerText}",""]`
   const stringSearchClass = `["${element.innerText}","disable"]`
-
-  console.log(stringList)
-  console.log(stringSearchEmpty)
-  console.log(stringSearchClass)
   
   const replaceClass = (search, className) => stringList.replace(search, className)
   
+  console.log(stringList)
+  console.log(stringSearchEmpty)
+  console.log(stringSearchClass)
+
   if ( stringList.includes( stringSearchEmpty ) )
   {
     localStorage.setItem("listaDeCompras", replaceClass(stringSearchEmpty, stringSearchClass))
@@ -150,4 +121,4 @@ ol.addEventListener("dblclick", disabledItem)
 
 trash.addEventListener("click", deleteList)
 refresh.addEventListener("click", updateList)
-buttonPrintList.addEventListener("click", printList)
+//buttonPrintList.addEventListener("click", printList)

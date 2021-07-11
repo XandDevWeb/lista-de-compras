@@ -64,5 +64,5 @@ header div.theme label div.button span.switch
     transition: all .3s;
 }
 
-.light-theme { left: -7px; }
-.dark-theme { left: 11px; }
+.light-theme-aplication { left: -7px; }
+.dark-theme-aplication { left: 11px; }

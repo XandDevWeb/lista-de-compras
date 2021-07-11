@@ -19,11 +19,11 @@ span
 
 span:nth-child( 2n -1 )
 {
-  background-color: #ff7f5096;
+  background-color: var( --background-list-1 );
 }
 span:nth-child( 2n )
 {
-  background-color: #ff7f5035;
+  background-color: var( --background-list-2 );
 }
 
 span.disable
@@ -35,5 +35,5 @@ span.disable
 li.disable
 {
   text-decoration: line-through;
-  color: rgb(62, 104, 106);
+  color: rgb(147, 184, 186);
 }

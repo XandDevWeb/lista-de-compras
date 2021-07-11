@@ -21,15 +21,15 @@ const addInputItem = () => {
 }
 
 const addInputItemWithValue = value => {
-  const input = document.createElement("input")
-  
-  input.setAttribute( "type", "text" )
-  input.setAttribute( "name", "item" )
-  input.setAttribute( "placeholder", "novo item" )
-  input.setAttribute( "class", `${value[1]}` )
-  input.setAttribute( "value", `${value[0]}` )
+  const inputTagValue = [
+    [ "type", "text" ],
+    [ "name", "item" ],
+    [ "placeholder", "novo item" ],
+    [ "class", `${value[1]}` ],
+    [ "value", `${value[0]}` ]
+  ]
 
-  console.log(value)
+  const input = createElement("input", inputTagValue)
   
   const divItem = buttonAddItem.parentNode
   divItem.insertBefore( input, buttonAddItem )
@@ -38,21 +38,7 @@ const addInputItemWithValue = value => {
 const preparePage = () => {
   inputTitle.value = currentList.title
   
-  currentList.list.forEach( text => addInputItemWithValue(text) );
-}
-
-const getListId = () => Number( localStorage.getItem("listToOpen") )
-
-const formatUnit = unit => unit < 10 ? `0${unit}` : unit
-
-const getDate = () => {
-  const date = new Date()
-
-  const day = date.getDate()
-  const month = date.getMonth() + 1
-  const year = date.getFullYear()
-
-  return `${formatUnit(day)} / ${formatUnit(month)} / ${formatUnit(year)}`
+  currentList.list.forEach( text => addInputItemWithValue(text) )
 }
 
 const getInputValues = () => {
@@ -94,7 +80,6 @@ const toUpdateList = event => {
 const removeInput = event => {
   const clickedElement = event.target
 
-  
   if ( clickedElement.nodeName === "INPUT" )
   {
     clickedElement.remove()
